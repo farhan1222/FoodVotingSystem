@@ -1,0 +1,14 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head><title><fmt:message key="login.title"/></title></head>
+<body>
+    <form action="loginController.do" method="POST">
+        User Name: <input type="text" name="username">    <br> <br>
+        Password: <input type="password" name="password"> <br> <br>
+        <input type="submit" value="OK">
+    </form>
+</body>
+</html>
