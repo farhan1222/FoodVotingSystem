@@ -1,5 +1,7 @@
 package net.therap.service;
 
+import net.therap.dao.FoodDao;
+import net.therap.dao.FoodDaoImpl;
 import net.therap.domain.Food;
 
 import java.sql.SQLException;
@@ -12,10 +14,11 @@ import java.util.List;
  * Time: 4:26 PM
  * To change this template use File | Settings | File Templates.
  */
-public class FoodServiceImpl implements FoodService{
-    public List<Food> getFoodList() throws SQLException, ClassNotFoundException{
+public class FoodServiceImpl implements FoodService {
+    public List<Food> getFoodList() throws SQLException, ClassNotFoundException {
+        FoodDao foodDao = new FoodDaoImpl();
 
 
-        return null;
+        return foodDao.getFoodList();
     }
 }

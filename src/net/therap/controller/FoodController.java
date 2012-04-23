@@ -1,5 +1,11 @@
 package net.therap.controller;
 
+import net.therap.dao.FoodDao;
+import net.therap.dao.FoodDaoImpl;
+import net.therap.domain.Food;
+import net.therap.service.FoodService;
+import net.therap.service.FoodServiceImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,9 +37,24 @@ public class FoodController extends HttpServlet {
         String userType = session.getAttribute("userType").toString();
         pw.print(userType);
 
+        FoodService foodService = new FoodServiceImpl();
+        List<Food> foodList = null;
+        try {
+            foodList = foodService.getFoodList();
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
+
+
+        request.setAttribute("foodList", foodList);
+
         RequestDispatcher view;
 
-        view = userType.equals("0") ? request.getRequestDispatcher("/WEB-INF/jsp/user/show.jsp") : request.getRequestDispatcher("/WEB-INF/jsp/user/show.jsp");
+        view = userType.equals("0") ? request.getRequestDispatcher("/WEB-INF/jsp/user/user.jsp") : request.getRequestDispatcher("/WEB-INF/jsp/user/admin.jsp");
 
 
 
