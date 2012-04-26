@@ -14,5 +14,5 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public interface FoodDao {
-    java.util.List<Food> getFoodList() throws SQLException, ClassNotFoundException;
+    java.util.List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException;
 }

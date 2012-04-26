@@ -1,6 +1,5 @@
-<%@ page import="net.therap.domain.Food" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Iterator" %>
+<%--<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>--%>
 <%--
   Created by IntelliJ IDEA.
   User: farhan
@@ -9,50 +8,39 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head><title>Simple admin page</title></head>
 <body>admin page <br> <br>
 <strong>Food List<strong>
     <table>
-    <tr>
-        <th>Name</th>
-        <th>Votes</th>
-    </tr>
-    <c:forEach var="food" items="${foodList}">
         <tr>
-            <td>
-                 ${food.foodName}
-            </td>
-            <td>
-               ${food.voteCount}
-            </td>
-
+            <th>Name</th>
+            <th>Votes</th>
         </tr>
-    </c:forEach>
-
-
-
-</table>
-
-    <%--<table>
-
         <c:forEach var="food" items="${foodList}">
-            migod
+            pritom
             <tr>
-                <td>${food.foodName}</td>
+                <td>
+                        ${food.foodName}
+                </td>
+                <td>
+                        ${food.count}
+                </td>
+
             </tr>
         </c:forEach>
-    </table>--%>
+    </table>
 
 
-    <%
+    <%--    <%
 
 List<Food> food = (List<Food>)request.getAttribute("foodList");
 Iterator<Food> it = food.iterator();
 while(it.hasNext()) {
 out.print("<br> food:  " + it.next().getFoodName());
 }
-    %>
+    %>--%>
 
 </body>
 </html>

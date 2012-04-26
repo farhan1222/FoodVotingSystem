@@ -15,10 +15,10 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FoodServiceImpl implements FoodService {
-    public List<Food> getFoodList() throws SQLException, ClassNotFoundException {
+    public List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException {
         FoodDao foodDao = new FoodDaoImpl();
 
 
-        return foodDao.getFoodList();
+        return foodDao.getFoodList(userId);
     }
 }

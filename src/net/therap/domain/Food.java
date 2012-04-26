@@ -11,6 +11,7 @@ public class Food {
     private String foodName;
     private int foodId;
     private int count;
+    private int voted;
 
     public Food(String foodName, int foodId, int count) {
         this.foodName = foodName;

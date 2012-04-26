@@ -14,12 +14,12 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FoodDaoImpl implements FoodDao {
-    public List<Food> getFoodList() throws SQLException, ClassNotFoundException {
+    public List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException {
         Class.forName("oracle.jdbc.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@db102:1521:THERAP", "trainee", "pass321");
 
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from FMP_FOODS");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS WHERE FOOD_ID NOT IN (SELECT FOOD_ID FROM FMP_USERS_FOODS WHERE USER_ID = " + userId + " AND VOTINGDATE != SYSDATE)");
 
         List<Food> foodList = new ArrayList<Food>();
 

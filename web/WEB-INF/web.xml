@@ -50,6 +50,11 @@
         <servlet-name>FoodController</servlet-name>
         <servlet-class>net.therap.controller.FoodController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VoteController</servlet-name>
+        <servlet-class>net.therap.controller.VoteController</servlet-class>
+    </servlet>
+
 
     <servlet-mapping>
         <servlet-name>login</servlet-name>
@@ -58,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>FoodController</servlet-name>
         <url-pattern>/FoodController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoteController</servlet-name>
+        <url-pattern>/VoteController.do</url-pattern>
     </servlet-mapping>
 
 

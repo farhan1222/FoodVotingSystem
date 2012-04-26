@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,14 +34,14 @@ public class FoodController extends HttpServlet {
         PrintWriter pw = response.getWriter();
         pw.print("food controller ");
         HttpSession session = request.getSession(false);
-        String id = session.getAttribute("userId").toString();
+        int id = Integer.parseInt(session.getAttribute("userId").toString());
         String userType = session.getAttribute("userType").toString();
         pw.print(userType);
 
         FoodService foodService = new FoodServiceImpl();
         List<Food> foodList = null;
         try {
-            foodList = foodService.getFoodList();
+            foodList = foodService.getFoodList(id);
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ClassNotFoundException e) {
@@ -49,8 +50,8 @@ public class FoodController extends HttpServlet {
 
 
 
-
         request.setAttribute("foodList", foodList);
+
 
         RequestDispatcher view;
 

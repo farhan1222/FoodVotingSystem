@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="Unnamed">
+    <CLASSES>
+      <root url="jar:///usr/local/tomcat6/lib/annotations-api.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/el-api.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/jasper.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/jasper-el.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/jsp-api.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/servlet-api.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/tomcat-i18n-ja.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/tomcat-i18n-fr.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/ecj-3.7.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/tomcat-i18n-es.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/tomcat-dbcp.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/catalina-tribes.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/tomcat-coyote.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/catalina.jar!/" />
+      <root url="file:///usr/local/tomcat6" />
+      <root url="jar:///usr/local/tomcat6/lib/catalina-ant.jar!/" />
+      <root url="jar:///usr/local/tomcat6/lib/catalina-ha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ojdbc14-10.2.0.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
