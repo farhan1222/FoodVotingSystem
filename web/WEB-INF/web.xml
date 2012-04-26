@@ -6,42 +6,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 
-    <!-- Sitemesh Filter -->
-
-    <filter>
-        <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>sitemesh</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>loginFilter</filter-name>
-        <filter-class>net.therap.filter.LoginFilter</filter-class>
-    </filter>
-
-    <!-- Put the URL pattern what you want to protect-->
-
-    <!--filter-mapping>
-        <filter-name>loginFilter</filter-name>
-        <servlet-name>app</servlet-name>
-    </filter-mapping-->
-
-    <filter-mapping>
-        <filter-name>loginFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-
-    <filter-mapping>
-        <filter-name>loginFilter</filter-name>
-        <servlet-name>login</servlet-name>
-    </filter-mapping>
-
-
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>net.therap.controller.LoginController</servlet-class>
@@ -70,12 +34,42 @@
     </servlet-mapping>
 
 
+    <!--<filter>-->
+        <!--<filter-name>loginFilter</filter-name>-->
+        <!--<filter-class>net.therap.filter.LoginFilter</filter-class>-->
+    <!--</filter>-->
+     <!--<filter-mapping>-->
+        <!--&lt;!&ndash;<filter-name>loginFilter</filter-name>&ndash;&gt;-->
+        <!--&lt;!&ndash;<url-pattern>/*</url-pattern>&ndash;&gt;-->
+    <!--</filter-mapping>-->
+
+    <!-- Put the URL pattern what you want to protect-->
+
+    <!--filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <servlet-name>app</servlet-name>
+    </filter-mapping-->
 
 
 
 
+    <!--<filter-mapping>-->
+    <!--<filter-name>loginFilter</filter-name>-->
+    <!--<servlet-name>login</servlet-name>-->
+    <!--</filter-mapping>-->
 
 
+    <!-- Sitemesh Filter -->
+
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <welcome-file-list>
         <welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>

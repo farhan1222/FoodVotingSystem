@@ -70,6 +70,7 @@ public class FoodController extends HttpServlet {
         request.setAttribute("breakfastFlag",breakfastList.get(0).getVoted());
         request.setAttribute("lunchFlag",lunchList.get(0).getVoted());
         request.setAttribute("dinnerFlag",dinnerList.get(0).getVoted());
+        request.setAttribute("user", session.getAttribute("userName"));
 
 
 

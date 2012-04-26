@@ -3,7 +3,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head><title><fmt:message key="login.title"/></title></head>
+<head><title>Food Voting</title></head>
 <body>
     <form action="loginController.do" method="POST">
         User Name: <input type="text" name="username">    <br> <br>

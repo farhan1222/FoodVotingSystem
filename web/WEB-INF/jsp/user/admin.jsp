@@ -10,16 +10,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head><title>Simple admin page</title></head>
+<head><title>Admin page</title></head>
 <body>admin page <br> <br>
 <strong>Food List<strong>
+
     <table>
-        <tr>
-            <th>Name</th>
-            <th>Votes</th>
-        </tr>
-        <c:forEach var="food" items="${foodList}">
-            pritom
+
+    <tr>
+    BREAKFAST
+    <br>
+    <br>
+    <table>
+
+        <c:forEach var="food" items="${breakfastList}">
+
             <tr>
                 <td>
                         ${food.foodName}
@@ -28,11 +32,50 @@
                         ${food.count}
                 </td>
 
+
+            </tr>
+        </c:forEach>
+    </table>
+    </tr>
+
+    <tr>
+    <br>
+    LUNCH
+    <br>
+    <br>
+    <table>
+
+        <c:forEach var="food" items="${lunchList}">
+
+            <tr>
                 <td>
-                        ${food.foodType}
+                        ${food.foodName}
                 </td>
                 <td>
-                        ${food.voted}
+                        ${food.count}
+                </td>
+
+
+            </tr>
+        </c:forEach>
+    </table>
+    </tr>
+
+    <tr>
+    <br>
+    LUNCH
+    <br>
+    <br>
+    <table>
+
+        <c:forEach var="food" items="${dinnerList}">
+
+            <tr>
+                <td>
+                        ${food.foodName}
+                </td>
+                <td>
+                        ${food.count}
                 </td>
 
 
@@ -41,14 +84,7 @@
     </table>
 
 
-    <%--    <%
-
-List<Food> food = (List<Food>)request.getAttribute("foodList");
-Iterator<Food> it = food.iterator();
-while(it.hasNext()) {
-out.print("<br> food:  " + it.next().getFoodName());
-}
-    %>--%>
+    </table>
 
 </body>
 </html>

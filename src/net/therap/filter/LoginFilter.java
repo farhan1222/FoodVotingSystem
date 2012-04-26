@@ -11,9 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * @author misbah
- */
+
 public class LoginFilter implements Filter {
     private static final Logger log = LoggerFactory.getLogger(LoginFilter.class);
 
@@ -23,24 +21,20 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-         PrintWriter pw = ((HttpServletResponse)response).getWriter();
+       // PrintWriter pw = ((HttpServletResponse) response).getWriter();
 
 
-        HttpSession session = ((HttpServletRequest)request).getSession(false);
-        if (session == null || session.getAttribute("USER") == null) {
-              // pw.print("inside filter");
+
+        HttpSession session = ((HttpServletRequest) request).getSession(false);
+
+        if (session == null) {
             log.debug("user is not logged in");
-            //RequestDispatcher rd = request.getRequestDispatcher("/login");
-            //rd.forward(request, response);
-            //((HttpServletResponse) response).sendRedirect("LoginController.do");
+            //((HttpServletResponse) response).sendRedirect("loginController.do");
 
-
-            chain.doFilter(request, response);
-
-
-        } else {
-              chain.doFilter(request, response);
         }
+
+
+        chain.doFilter(request, response);
     }
 
     public void destroy() {

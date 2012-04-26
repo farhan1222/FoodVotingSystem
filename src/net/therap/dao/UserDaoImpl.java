@@ -22,19 +22,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public User getUserByUserName(String userName) throws SQLException, ClassNotFoundException {
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@db102:1521:THERAP", "trainee", "pass321");
 
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from ASHRAF_Employee");
-
-        String s;
-        while (rs.next()) {
-
-            s = rs.getString("First_Name");
-            String i = rs.getString("Last_Name");
-            System.out.println(s + " " + i);
-        }
         return null;
     }
 
@@ -57,19 +45,6 @@ public class UserDaoImpl implements UserDao {
         return user;
 
     }
-    /*public static void  main( String args[]){
-        UserDaoImpl usr = new UserDaoImpl();
-
-        try{
-
-
-         User user = usr.getUserByUserNameAndPassword("pritom", "therap");
-        }
-        catch (Exception e){
-
-        }
-
-    }    */
 
 
 }
