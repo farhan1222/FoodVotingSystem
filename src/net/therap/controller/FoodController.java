@@ -1,7 +1,5 @@
 package net.therap.controller;
 
-import net.therap.dao.FoodDao;
-import net.therap.dao.FoodDaoImpl;
 import net.therap.domain.Food;
 import net.therap.service.FoodService;
 import net.therap.service.FoodServiceImpl;
@@ -48,15 +46,36 @@ public class FoodController extends HttpServlet {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
+        List<Food> breakfastList = new ArrayList<Food>();
+        List<Food> lunchList = new ArrayList<Food>();
+        List<Food> dinnerList = new ArrayList<Food>();
+
+        if (foodList != null) {
+            for (Food f : foodList) {
+                if (f.getFoodType().equals("Breakfast")) {
+                    breakfastList.add(f);
+                } else if (f.getFoodType().equals("Dinner")) {
+                    dinnerList.add(f);
+                } else if (f.getFoodType().equals("Lunch")) {
+                    lunchList.add(f);
+                }
+            }
+        }
 
 
         request.setAttribute("foodList", foodList);
+        request.setAttribute("breakfastList",breakfastList);
+        request.setAttribute("lunchList",lunchList);
+        request.setAttribute("dinnerList",dinnerList);
+        request.setAttribute("breakfastFlag",breakfastList.get(0).getVoted());
+        request.setAttribute("lunchFlag",lunchList.get(0).getVoted());
+        request.setAttribute("dinnerFlag",dinnerList.get(0).getVoted());
+
 
 
         RequestDispatcher view;
 
         view = userType.equals("0") ? request.getRequestDispatcher("/WEB-INF/jsp/user/user.jsp") : request.getRequestDispatcher("/WEB-INF/jsp/user/admin.jsp");
-
 
 
         /*if (userType.equals("0")) {

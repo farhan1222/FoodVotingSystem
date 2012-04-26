@@ -28,6 +28,14 @@
                         ${food.count}
                 </td>
 
+                <td>
+                        ${food.foodType}
+                </td>
+                <td>
+                        ${food.voted}
+                </td>
+
+
             </tr>
         </c:forEach>
     </table>

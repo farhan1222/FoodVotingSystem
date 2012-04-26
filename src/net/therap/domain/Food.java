@@ -10,13 +10,16 @@ package net.therap.domain;
 public class Food {
     private String foodName;
     private int foodId;
+    private String foodType;
     private int count;
     private int voted;
 
-    public Food(String foodName, int foodId, int count) {
+    public Food(String foodName, int foodId, String foodType, int count, int voted) {
         this.foodName = foodName;
         this.foodId = foodId;
+        this.foodType = foodType;
         this.count = count;
+        this.voted = voted;
     }
 
     public String getFoodName() {
@@ -35,11 +38,27 @@ public class Food {
         this.foodId = foodId;
     }
 
+    public String getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(String foodType) {
+        this.foodType = foodType;
+    }
+
     public int getCount() {
         return count;
     }
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getVoted() {
+        return voted;
+    }
+
+    public void setVoted(int voted) {
+        this.voted = voted;
     }
 }
