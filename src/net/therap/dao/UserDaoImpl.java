@@ -1,6 +1,9 @@
 package net.therap.dao;
 
+import net.therap.controller.UserController;
 import net.therap.domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
@@ -12,6 +15,8 @@ import java.sql.*;
  * To change this template use File | Settings | File Templates.
  */
 public class UserDaoImpl implements UserDao {
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
 
     public void save(User user) {
 
@@ -28,13 +33,16 @@ public class UserDaoImpl implements UserDao {
 
     public User getUserByUserNameAndPassword(String userName, String password) throws SQLException, ClassNotFoundException {
 
-        Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@db102:1521:THERAP", "trainee", "pass321");
 
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from FMP_USERS  where USER_NAME ='" + userName + "' and  PASSWORD='" + password + "' ");
+        DatabaseAccessTemplate databaseAccessTemplate = new DatabaseAccessTemplate();
+
+        Connection con = databaseAccessTemplate.openConnection();
+
+        //ResultSet rs = databaseAccessTemplate.queryForObject("select * from FMP_USERS  where USER_NAME = ? and  PASSWORD= ? ", userName, password);
+        ResultSet rs = databaseAccessTemplate.queryForObject("select * from FMP_USERS  where USER_NAME = '"+ userName +"' and  PASSWORD = '" + password+ "'");
 
         User user = null;
+
         while (rs.next()) {
             user = new User(rs.getString("USER_NAME"), rs.getString("PASSWORD"), Integer.parseInt(rs.getString("FLAG")),
                     Integer.parseInt(rs.getString("USER_ID")));
@@ -42,7 +50,9 @@ public class UserDaoImpl implements UserDao {
         //System.out.println( user.isAdmin());
 
         //assert user != null;
+        databaseAccessTemplate.closeConnection();
         return user;
+
 
     }
 

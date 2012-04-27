@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+ <form target="logout" method="POST"></form>
  <br>
  <br>
 

@@ -63,7 +63,7 @@
 
     <tr>
     <br>
-    LUNCH
+    DINNER
     <br>
     <br>
     <table>

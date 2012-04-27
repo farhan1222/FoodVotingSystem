@@ -6,7 +6,8 @@
 <html>
 
 <head>
-    <title><decorator:title default="INTRANET"/></title>
+    <%@ include file = "header.jsp"%>
+    <title><decorator:title default="Food Voting System"/></title>
     <decorator:head/>
 
 

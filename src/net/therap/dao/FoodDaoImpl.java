@@ -2,7 +2,9 @@ package net.therap.dao;
 
 import net.therap.domain.Food;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,24 @@ import java.util.List;
  */
 public class FoodDaoImpl implements FoodDao {
     public List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException {
-        Class.forName("oracle.jdbc.OracleDriver");
+
+
+        /*Class.forName("oracle.jdbc.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@db102:1521:THERAP", "trainee", "pass321");
 
         Statement stmt = con.createStatement();
-        //ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS WHERE FOOD_ID NOT IN (SELECT FOOD_ID FROM FMP_USERS_FOODS WHERE USER_ID = " + userId + " AND VOTINGDATE != SYSDATE)");
-        ResultSet rs2 = stmt.executeQuery("SELECT DISTINCT  FOOD_TYPE FROM FMP_FOODS minus ( SELECT  FOOD_TYPE  FROM FMP_FOODS where FOOD_ID IN ( SELECT FOOD_ID FROM FMP_USERS_FOODS WHERE USER_ID = "+ userId + " AND to_date(VOTINGDATE, 'dd/mm/yyyy') = to_date(sysdate, 'dd/mm/yyyy')))");
+        *///ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS WHERE FOOD_ID NOT IN (SELECT FOOD_ID FROM FMP_USERS_FOODS WHERE USER_ID = " + userId + " AND VOTINGDATE != SYSDATE)");
+
+
+        DatabaseAccessTemplate databaseAccessTemplate = new DatabaseAccessTemplate();
+
+        Connection con = databaseAccessTemplate.openConnection();
+
+
+        ResultSet rs2 = databaseAccessTemplate.queryForObject("SELECT DISTINCT  FOOD_TYPE FROM FMP_FOODS minus " +
+                "( SELECT  FOOD_TYPE  FROM FMP_FOODS where FOOD_ID IN ( SELECT FOOD_ID FROM FMP_USERS_FOODS " +
+                "WHERE USER_ID = " + userId + " AND to_date(VOTINGDATE, " +
+                "'dd/mm/yyyy') = to_date(sysdate, 'dd/mm/yyyy')))");
 
         List<String> allowedFood = new ArrayList<String>();
         while (rs2.next()) {
@@ -28,8 +42,8 @@ public class FoodDaoImpl implements FoodDao {
 
         }
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS ");
-
+        //ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS ");
+        ResultSet rs = databaseAccessTemplate.queryForObject("SELECT * FROM FMP_FOODS ");
 
         List<Food> foodList = new ArrayList<Food>();
 
@@ -45,7 +59,8 @@ public class FoodDaoImpl implements FoodDao {
             foodList.add(new Food(rs.getString("FOOD_NAME"), rs.getInt("FOOD_ID"), rs.getString("FOOD_TYPE"), rs.getInt("COUNT"), voted));
 
         }
-
+        //databaseAccessTemplate.commit();
+        databaseAccessTemplate.closeConnection();
 
         return foodList;
     }
