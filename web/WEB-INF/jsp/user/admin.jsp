@@ -11,7 +11,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head><title>Admin page</title></head>
-<body>admin page <br> <br>
+<body>
+
+<div id="page">
+		<div id="content">
+
+
+
+
+
+
+
+
+admin page <br> <br>
 <strong>Food List<strong>
 
     <table>
@@ -85,6 +97,16 @@
 
 
     </table>
+
+
+<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+
 
 </body>
 </html>

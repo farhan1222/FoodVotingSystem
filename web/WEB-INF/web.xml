@@ -18,6 +18,10 @@
         <servlet-name>VoteController</servlet-name>
         <servlet-class>net.therap.controller.VoteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOutController</servlet-name>
+        <servlet-class>net.therap.controller.LogOutController</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>VoteController</servlet-name>
         <url-pattern>/VoteController.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutController</servlet-name>
+        <url-pattern>/LogOut.do</url-pattern>
     </servlet-mapping>
 
 

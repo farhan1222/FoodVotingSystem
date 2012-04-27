@@ -74,6 +74,7 @@ public class FoodController extends HttpServlet {
 
 
 
+
         RequestDispatcher view;
 
         view = userType.equals("0") ? request.getRequestDispatcher("/WEB-INF/jsp/user/user.jsp") : request.getRequestDispatcher("/WEB-INF/jsp/user/admin.jsp");
