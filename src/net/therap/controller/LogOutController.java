@@ -20,10 +20,6 @@ import java.io.IOException;
 public class LogOutController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

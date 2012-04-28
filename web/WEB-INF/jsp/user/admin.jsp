@@ -26,8 +26,8 @@
 
     <div id="content">
 
-        admin page <br> <br>
-        <strong>Food List<strong>
+        <strong> Admin Page </strong> <br> <br>
+        <strong>Food List<strong> <br>  <br>
 
             <table>
 

@@ -26,9 +26,28 @@
 		<div id="content">
 
             <form action="loginController.do" method="POST">
-                User Name: <input type="text" name="username">    <br> <br>
-                Password: <input type="password" name="password"> <br> <br>
-                <input type="submit" value="Log In">
+                <table>
+                    <tr>
+                        <td>
+                        User Name:
+                        </td>
+                        <td> <input type="text" name="username"> </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                        Password:
+                        </td>
+                        <td> <input type="password" name="password">  </td>
+                    </tr>
+                     <tr>
+                        <td>
+                        <input type="submit" value="Log In">
+                         </td>
+                    </tr>
+                </table>
             </form>
 
 

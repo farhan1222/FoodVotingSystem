@@ -29,12 +29,11 @@ public class FoodController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter pw = response.getWriter();
-        pw.print("food controller ");
+
         HttpSession session = request.getSession(false);
         int id = Integer.parseInt(session.getAttribute("userId").toString());
         String userType = session.getAttribute("userType").toString();
-        pw.print(userType);
+
 
         FoodService foodService = new FoodServiceImpl();
         List<Food> foodList = null;
