@@ -10,7 +10,7 @@
 
 
 
-    <a style="padding-left:800px; padding-top:300px;" href ="LogOut.do">Log Out</a>
+
 
 
 

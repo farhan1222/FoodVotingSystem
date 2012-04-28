@@ -11,29 +11,34 @@
 <head>
     <link href="/WEB-INF/css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <title>User Page</title>
-      Hi, ${userName}
+    <div style="padding-left:800px;">
+        Hi, ${userName}           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a  href ="LogOut.do">Log Out</a>
+    </div>
+
+    <%--<a style="padding-left:800px; padding-top:300px;" href ="LogOut.do">Log Out</a>--%>
 
 </head>
 <body>
 
 <div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">Food Voting System</a></h1>
 
-			</div>
-		</div>
-	</div>
+
 
 	<div id="page">
+        <br> <br> <br> <br>
 		<div id="content">
+
+
             <table>
 
                 <c:if test="${breakfastFlag ne 1}">
                     What Breakfast do you prefer?<br/>
 
                     <form action="VoteController.do" method="POST">
+                        <fieldset>
+                              <legend>Select:</legend>
                         <c:forEach var="food" items="${breakfastList}">
 
                             <%--           <c:if test="${food.foodID==1}">Food One--%>
@@ -42,6 +47,8 @@
 
                         </c:forEach>
                         <button type="submit">OK</button>
+
+                       </fieldset>
                     </form>
                 </c:if>
 
@@ -56,6 +63,9 @@
                     What Lunch do you prefer?<br/>
 
                     <form action="VoteController.do" method="POST">
+
+                         <fieldset>
+                              <legend>Select:</legend>
                         <c:forEach var="food" items="${lunchList}">
 
                             <%--           <c:if test="${food.foodID==1}">Food One--%>
@@ -64,6 +74,8 @@
 
                         </c:forEach>
                         <button type="submit">OK</button>
+
+                             </fieldset>
                     </form>
                 </c:if>
 
@@ -77,6 +89,8 @@
                     What Dinner do you prefer?<br/>
 
                     <form action="VoteController.do" method="POST">
+                         <fieldset>
+                              <legend>Select:</legend>
                         <c:forEach var="food" items="${dinnerList}">
 
                             <%--           <c:if test="${food.foodID==1}">Food One--%>
@@ -85,6 +99,7 @@
 
                         </c:forEach>
                         <button type="submit">OK</button>
+                             </fieldset>
                     </form>
                 </c:if>
 
@@ -97,8 +112,7 @@
 
 
 
-
-
+           <br><br> <br>
 
 
 

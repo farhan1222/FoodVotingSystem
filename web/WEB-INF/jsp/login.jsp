@@ -9,25 +9,26 @@
 </head>
 <body>
 
-<div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">Food Voting System</a></h1>
+<%--<div id="wrapper">--%>
+	<%--<div id="header-wrapper">--%>
+		<%--<div id="header">--%>
+			<%--<div id="logo">--%>
+				<%--<h1><a href="#">Food Voting System</a></h1>--%>
 
-			</div>
-		</div>
-	</div>
+			<%--</div>--%>
+		<%--</div>--%>
+<%--</div>--%>
 	<!-- end #header -->
 
 	<!-- end #menu -->
 	<div id="page">
+        <br> <br> <br> <br>
 		<div id="content">
 
             <form action="loginController.do" method="POST">
                 User Name: <input type="text" name="username">    <br> <br>
                 Password: <input type="password" name="password"> <br> <br>
-                <input type="submit" value="OK">
+                <input type="submit" value="Log In">
             </form>
 
 

@@ -13,6 +13,7 @@
 <link href="/WEB-INF/css/style.css" type="text/css" rel="stylesheet"/>
 
 
+
 <style type="text/css">
 
 /*body{ background-color:blue;}*/
@@ -298,143 +299,6 @@ img.aligncenter {
 
 /* Sidebar */
 
-#sidebar-bg {
-    float: left;
-    width: 330px;
-    background: url(/WEB-INF/images/sidebar-shadow-bg.png) repeat-y left top;
-}
-
-#sidebar {
-    overflow: hidden;
-    width: 270px;
-    padding: 30px 30px 20px 30px;
-    background: url(/WEB-INF/images/sidebar-bg-bottom.png) no-repeat left bottom;
-}
-
-#sidebar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#sidebar li {
-    margin: 0;
-    padding: 0;
-}
-
-#sidebar li ul {
-    margin: 0px 0px;
-    padding-bottom: 30px;
-}
-
-    /*#sidebar li li {
-        padding-left: 30px;
-        line-height: 35px;
-        background: url(/WEB-INF/images/img01.gif) no-repeat left 5px;
-    }*/
-
-#sidebar li li span {
-    display: block;
-    margin-top: -20px;
-    padding: 0;
-    font-size: 11px;
-    font-style: italic;
-}
-
-#sidebar h2 {
-    height: 38px;
-    margin-bottom: 20px;
-    padding: 12px 0 0 0px;
-    border-bottom: 1px solid #DEDEDE;
-    letter-spacing: -2px;
-    font-size: 30px;
-}
-
-#sidebar p {
-    margin: 0 0px;
-    padding: 0px 20px 20px 20px;
-    text-align: justify;
-}
-
-#sidebar a {
-    border: none;
-}
-
-#sidebar a:hover {
-    text-decoration: underline;
-}
-
-/* Calendar */
-
-#calendar {
-}
-
-#calendar_wrap {
-    padding: 20px;
-}
-
-#calendar table {
-    width: 100%;
-}
-
-#calendar tbody td {
-    text-align: center;
-}
-
-#calendar #next {
-    text-align: right;
-}
-
-/* Footer */
-
-#footer {
-    width: 650px;
-    height: 100px;
-    margin: 0px auto;
-    padding-left: 330px;
-}
-
-#footer p {
-    margin: 0;
-    padding-top: 18px;
-    line-height: normal;
-    letter-spacing: -1px;
-    text-align: center;
-    text-shadow: 1px 1px 1px #050505;
-    text-transform: lowercase;
-    font-family: 'Abel', sans-serif;
-    font-size: 20px;
-    color: #525050;
-}
-
-#footer a {
-    text-decoration: underline;
-    color: #525050;
-}
-
-#slider {
-    position: relative;
-    width: 590px;
-    margin: 0px auto 20px auto;
-}
-
-#slider .viewer {
-    width: 590px;
-    height: 300px;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-#slider .viewer .reel {
-    display: none;
-    height: 300px;
-}
-
-#slider .viewer .reel .slide {
-    position: relative;
-    width: 590px;
-    height: 300px;
-}
 
 
 </style>
@@ -443,6 +307,28 @@ img.aligncenter {
 </head>
 
 <body bgcolor="#F5FFFF">
+
+<%--<div style="padding-left:300px;">
+<script src="http://h2.flashvortex.com/display.php?id=2_1335543153_8131_774_0_728_90_10_2_28" type="text/javascript"></script>
+
+    </div>--%>
+
+<table class="style1">
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td class="style2" style="padding-left:300px; padding-top:100px;">
+                    <object  align="middle">
+                    <param name="movie" value="flashvortex.swf" />
+                    <param name="quality" value="best" />
+                    <embed src="flashvortex.swf" width="700" height="87">
+                    </embed>
+                    </object>
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+</table>
 
 <decorator:body/>
 
