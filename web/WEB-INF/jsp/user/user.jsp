@@ -9,12 +9,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="/WEB-INF/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/WEB-INF/css/style.css" rel="stylesheet" type="text/css" media="screen"/>
     <title>User Page</title>
-    <div style="padding-left:800px;">
-        Hi, ${userName}           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <a  href ="LogOut.do">Log Out</a>
+    <div style="padding-left:800px;">
+        Hi, ${userName} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a href="LogOut.do">Log Out</a>
     </div>
 
     <%--<a style="padding-left:800px; padding-top:300px;" href ="LogOut.do">Log Out</a>--%>
@@ -24,11 +25,10 @@
 
 <div id="wrapper">
 
-
-
-	<div id="page">
+    <div id="page">
         <br> <br> <br> <br>
-		<div id="content">
+
+        <div id="content">
 
 
             <table>
@@ -38,17 +38,20 @@
 
                     <form action="VoteController.do" method="POST">
                         <fieldset>
-                              <legend>Select:</legend>
-                        <c:forEach var="food" items="${breakfastList}">
+                            <legend>Select:</legend>
+                            <c:forEach var="food" items="${foodList}">
+                                <c:if test="${food.foodType eq 'Breakfast'}">
 
-                            <%--           <c:if test="${food.foodID==1}">Food One--%>
-                            <input type="radio" name="food" id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
+                                    <%--           <c:if test="${food.foodID==1}">Food One--%>
+                                    <input type="radio" name="food"
+                                           id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
 
+                                </c:if>
+                            </c:forEach>
 
-                        </c:forEach>
-                        <button type="submit">OK</button>
+                            <button type="submit">OK</button>
 
-                       </fieldset>
+                        </fieldset>
                     </form>
                 </c:if>
 
@@ -64,22 +67,24 @@
 
                     <form action="VoteController.do" method="POST">
 
-                         <fieldset>
-                              <legend>Select:</legend>
-                        <c:forEach var="food" items="${lunchList}">
+                        <fieldset>
+                            <legend>Select:</legend>
+                            <c:forEach var="food" items="${foodList}">
+                                <c:if test="${food.foodType eq 'Lunch'}">
 
-                            <%--           <c:if test="${food.foodID==1}">Food One--%>
-                            <input type="radio" name="food" id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
+                                    <%--           <c:if test="${food.foodID==1}">Food One--%>
+                                    <input type="radio" name="food"
+                                           id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
+                                </c:if>
 
+                            </c:forEach>
+                            <button type="submit">OK</button>
 
-                        </c:forEach>
-                        <button type="submit">OK</button>
-
-                             </fieldset>
+                        </fieldset>
                     </form>
                 </c:if>
 
-                 <c:if test="${lunchFlag ne 0}">
+                <c:if test="${lunchFlag ne 0}">
                     You have already given your Lunch vote.
                 </c:if>
                 <br>
@@ -89,17 +94,18 @@
                     What Dinner do you prefer?<br/>
 
                     <form action="VoteController.do" method="POST">
-                         <fieldset>
-                              <legend>Select:</legend>
-                        <c:forEach var="food" items="${dinnerList}">
+                        <fieldset>
+                            <legend>Select:</legend>
+                            <c:forEach var="food" items="${foodList}">
+                                <c:if test="${food.foodType eq 'Dinner'}">
+                                    <%--           <c:if test="${food.foodID==1}">Food One--%>
+                                    <input type="radio" name="food"
+                                           id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
 
-                            <%--           <c:if test="${food.foodID==1}">Food One--%>
-                            <input type="radio" name="food" id=""${food.foodName}" value="${food.foodId}"/>${food.foodName}<br/>
-
-
-                        </c:forEach>
-                        <button type="submit">OK</button>
-                             </fieldset>
+                                </c:if>
+                            </c:forEach>
+                            <button type="submit">OK</button>
+                        </fieldset>
                     </form>
                 </c:if>
 
@@ -110,25 +116,19 @@
             </table>
 
 
+            <br><br> <br>
 
 
-           <br><br> <br>
+        </div>
 
-
-
-
-		</div>
-
-		<div style="clear: both;">&nbsp;</div>
-	</div>
+        <div style="clear: both;">&nbsp;</div>
+    </div>
 
 </div>
 
- <%--<form target="logout" method="POST"></form>--%>
- <br>
- <br>
-
-
+<%--<form target="logout" method="POST"></form>--%>
+<br>
+<br>
 
 
 </body>

@@ -61,7 +61,7 @@ public class DatabaseAccessTemplate {
 
     public void updateQuery(String query, Object... parameters) {
 
-        // connection = openConnection();
+        Connection con = openConnection();
         PreparedStatement stmt = null;
         try {
             int i = 0;
@@ -91,7 +91,8 @@ public class DatabaseAccessTemplate {
 
 
         }
-        //closeConnection(stmt);
+        commit();
+        closeConnection(con);
     }
 
     void commit() {
@@ -111,35 +112,7 @@ public class DatabaseAccessTemplate {
     ResultSet queryForObject(String query) {
 
 
-/*        ResultSet resultSet = null;
-        PreparedStatement pstmt = null;
-        int i = 0;
-        try {
-
-            pstmt = connection.prepareStatement(query);
-             for (Object parameter : parameters) {
-
-                i++;
-                if (parameter instanceof String) {
-
-                    pstmt.setString(i, (String) parameter);
-
-                } else if (parameter instanceof Integer) {
-
-                    pstmt.setInt(i, (Integer) parameter);
-
-                }
-
-
-            }
-            resultSet = pstmt.executeQuery(query);
-
-        } catch (Exception exp) {
-            log.debug("error in query forobject");
-
-
-        }
-        return resultSet;*/
+        Connection con = openConnection();
 
 
         ResultSet resultSet = null;
@@ -159,7 +132,7 @@ public class DatabaseAccessTemplate {
             log.debug("error in query forobject");
 
         }
-
+        //closeConnection(con);
         return  resultSet;
 
 

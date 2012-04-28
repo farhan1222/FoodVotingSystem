@@ -12,5 +12,5 @@ public interface UserDao {
 
     User getUserByUserName(String userName) throws SQLException, ClassNotFoundException;
 
-    User getUserByUserNameAndPassword(String userName, String password) throws SQLException, ClassNotFoundException;
+    User getUserByUserNameAndPassword(String userName, String password) ;
 }

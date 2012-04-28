@@ -15,7 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FoodServiceImpl implements FoodService {
-    public List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException {
+    public List<Food> getFoodList(int userId)  {
         FoodDao foodDao = new FoodDaoImpl();
 
 

@@ -12,5 +12,5 @@ import java.sql.SQLException;
  * To change this template use File | Settings | File Templates.
  */
 public interface VoteDao {
-    void setVoteCount(Voting vote) throws ClassNotFoundException, SQLException;
+    void setVoteCount(Voting vote);
 }

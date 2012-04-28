@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class UserServiceImpl implements UserService {
 
 
-    public User getUserByUserNameAndPassword(String userName, String password) throws ClassNotFoundException, SQLException {
+    public User getUserByUserNameAndPassword(String userName, String password) {
 
         UserDaoImpl userService = new UserDaoImpl();
 

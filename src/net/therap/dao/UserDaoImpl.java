@@ -31,26 +31,27 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    public User getUserByUserNameAndPassword(String userName, String password) throws SQLException, ClassNotFoundException {
+    public User getUserByUserNameAndPassword(String userName, String password)  {
 
 
         DatabaseAccessTemplate databaseAccessTemplate = new DatabaseAccessTemplate();
 
-        Connection con = databaseAccessTemplate.openConnection();
+        String getAllUsersQuery = "select * from FMP_USERS  where USER_NAME = '"+ userName
+                +"' and  PASSWORD = '" + password+ "'";
 
-        //ResultSet rs = databaseAccessTemplate.queryForObject("select * from FMP_USERS  where USER_NAME = ? and  PASSWORD= ? ", userName, password);
-        ResultSet rs = databaseAccessTemplate.queryForObject("select * from FMP_USERS  where USER_NAME = '"+ userName +"' and  PASSWORD = '" + password+ "'");
+        ResultSet rs = databaseAccessTemplate.queryForObject(getAllUsersQuery);
 
         User user = null;
 
-        while (rs.next()) {
-            user = new User(rs.getString("USER_NAME"), rs.getString("PASSWORD"), Integer.parseInt(rs.getString("FLAG")),
-                    Integer.parseInt(rs.getString("USER_ID")));
+        try {
+            while (rs.next()) {
+                user = new User(rs.getString("USER_NAME"), rs.getString("PASSWORD"), Integer.parseInt(rs.getString("FLAG")),
+                        Integer.parseInt(rs.getString("USER_ID")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        //System.out.println( user.isAdmin());
 
-        //assert user != null;
-        databaseAccessTemplate.closeConnection();
         return user;
 
 

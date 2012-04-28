@@ -16,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FoodDaoImpl implements FoodDao {
-    public List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException {
+    public List<Food> getFoodList(int userId) {
 
 
         /*Class.forName("oracle.jdbc.OracleDriver");
@@ -28,39 +28,49 @@ public class FoodDaoImpl implements FoodDao {
 
         DatabaseAccessTemplate databaseAccessTemplate = new DatabaseAccessTemplate();
 
-        Connection con = databaseAccessTemplate.openConnection();
+        //Connection con = databaseAccessTemplate.openConnection();
 
-
-        ResultSet rs2 = databaseAccessTemplate.queryForObject("SELECT DISTINCT  FOOD_TYPE FROM FMP_FOODS minus " +
+        String foodQuery = "SELECT DISTINCT  FOOD_TYPE FROM FMP_FOODS minus " +
                 "( SELECT  FOOD_TYPE  FROM FMP_FOODS where FOOD_ID IN ( SELECT FOOD_ID FROM FMP_USERS_FOODS " +
                 "WHERE USER_ID = " + userId + " AND to_date(VOTINGDATE, " +
-                "'dd/mm/yyyy') = to_date(sysdate, 'dd/mm/yyyy')))");
+                "'dd/mm/yyyy') = to_date(sysdate, 'dd/mm/yyyy')))";
+
+        ResultSet rs2 = databaseAccessTemplate.queryForObject(foodQuery);
 
         List<String> allowedFood = new ArrayList<String>();
-        while (rs2.next()) {
-            allowedFood.add(rs2.getString("FOOD_TYPE"));
+        try {
+            while (rs2.next()) {
+                allowedFood.add(rs2.getString("FOOD_TYPE"));
 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
         //ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS ");
-        ResultSet rs = databaseAccessTemplate.queryForObject("SELECT * FROM FMP_FOODS ");
+        String getAllFoodQuery = "SELECT * FROM FMP_FOODS ";
+        ResultSet rs = databaseAccessTemplate.queryForObject(getAllFoodQuery);
 
         List<Food> foodList = new ArrayList<Food>();
 
         int voted = 1;
 
-        while (rs.next()) {
-            voted = 1;
-            //   while (rs2.next()) {
-            if (allowedFood.contains(rs.getString("FOOD_TYPE"))) {
-                voted = 0;
-            }
-            //}//
-            foodList.add(new Food(rs.getString("FOOD_NAME"), rs.getInt("FOOD_ID"), rs.getString("FOOD_TYPE"), rs.getInt("COUNT"), voted));
+        try {
+            while (rs.next()) {
+                voted = 1;
+                //   while (rs2.next()) {
+                if (allowedFood.contains(rs.getString("FOOD_TYPE"))) {
+                    voted = 0;
+                }
+                //}//
+                foodList.add(new Food(rs.getString("FOOD_NAME"), rs.getInt("FOOD_ID"), rs.getString("FOOD_TYPE"), rs.getInt("COUNT"), voted));
 
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         //databaseAccessTemplate.commit();
-        databaseAccessTemplate.closeConnection();
+        //databaseAccessTemplate.closeConnection();
 
         return foodList;
     }

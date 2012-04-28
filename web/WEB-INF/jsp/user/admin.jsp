@@ -9,6 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head><title>Admin page</title>
 
@@ -27,18 +28,19 @@
     <div id="content">
 
         <strong> Admin Page </strong> <br> <br>
-        <strong>Food List<strong> <br>  <br>
+        <strong>Food List</strong> <br> <br>
 
-            <table>
 
-                <tr>
-                    BREAKFAST
-                    <br>
-                    <br>
-                    <table>
+        <table>
 
-                            <c:forEach var="food" items="${breakfastList}">
-
+            <%--                <tr>
+                <br>
+                BREAKFAST
+                <br>
+                <br>
+                <table>
+                    <c:forEach var="food" items="${foodList}">
+                        <c:if test="${food.foodType eq 'Breakfast'}">
                             <tr>
 
                                 <td>
@@ -47,66 +49,95 @@
                                 <td>
                                         ${food.count}
                                 </td>
-
-
-                            </tr>
-
-                        </c:forEach>
-
-                    </table>
-
-                </tr>
-
-                <tr>
-                    <br>
-                    LUNCH
-                    <br>
-                    <br>
-                    <table>
-
-                        <c:forEach var="food" items="${lunchList}">
-
-                            <tr>
-                                <td>
-                                        ${food.foodName}
-                                </td>
-                                <td>
-                                        ${food.count}
-                                </td>
-
+                                <br>
 
                             </tr>
-                        </c:forEach>
-                    </table>
-                </tr>
+                        </c:if>
 
-                <tr>
-                    <br>
-                    DINNER
-                    <br>
-                    <br>
+                    </c:forEach>
+
+                </table>
+
+            </tr>--%>
+            <tr>
+                <br>
+                BREAKFAST
+                <br>
+                <br>
                 <table>
 
-                    <c:forEach var="food" items="${dinnerList}">
+                    <c:forEach var="food" items="${foodList}">
 
                         <tr>
+                            <c:if test="${food.foodType eq 'Breakfast'}">
+
+                                <td>
+                                        ${food.foodName}
+                                </td>
+                                <td>
+                                        ${food.count}
+                                </td>
+
+                            </c:if>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </tr>
+
+            <tr>
+                <br>
+                LUNCH
+                <br>
+                <br>
+                <table>
+
+                    <c:forEach var="food" items="${foodList}">
+
+                        <tr>
+                            <c:if test="${food.foodType eq 'Lunch'}">
+
+                                <td>
+                                        ${food.foodName}
+                                </td>
+                                <td>
+                                        ${food.count}
+                                </td>
+
+                            </c:if>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </tr>
+
+            <tr>
+                <br>
+                DINNER
+                <br>
+                <br>
+            <table>
+
+                <c:forEach var="food" items="${foodList}">
+
+                    <tr>
+                        <c:if test="${food.foodType eq 'Dinner'}">
+
                             <td>
                                     ${food.foodName}
                             </td>
                             <td>
                                     ${food.count}
                             </td>
+                        </c:if>
 
-
-                        </tr>
-                    </c:forEach>
-                </table>
-
-
+                    </tr>
+                </c:forEach>
             </table>
 
 
-            <div style="clear: both;">&nbsp;</div>
+        </table>
+
+
+        <div style="clear: both;">&nbsp;</div>
     </div>
     <!-- end #content -->
 

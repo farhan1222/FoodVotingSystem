@@ -13,5 +13,5 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface FoodService {
-    List<Food> getFoodList(int userId) throws SQLException, ClassNotFoundException;
+    List<Food> getFoodList(int userId);
 }

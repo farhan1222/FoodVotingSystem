@@ -13,5 +13,5 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public interface VoteService {
-    void setVoteCount(int userId,int foodId,Date votingDate) throws ClassNotFoundException, SQLException;
+    void setVoteCount(int userId,int foodId,Date votingDate);
 }

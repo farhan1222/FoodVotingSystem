@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -23,27 +22,20 @@ import java.util.Date;
  */
 public class VoteController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(VoteController.class);
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         int userId = Integer.parseInt(String.valueOf(session.getAttribute("userId")));
 
         VoteService voteService = new VoteServiceImpl();
 
-        //log.debug("pritom");
-        //log.debug(request.getParameter("food"));
 
-
-        try {
+        String votedFoodName = request.getParameter("food");
+        if (votedFoodName != null) {
             voteService.setVoteCount(userId, Integer.parseInt(request.getParameter("food")), new Date());
 
-            //voteService.setVoteCount(request.getParameter("food"), userId, Integer.parseInt(request.getParameter("food.foodId")), new Date());
-            //voteService.setVoteCount("honey musterd chicken fingers", 2, 1, new Date());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-
         response.sendRedirect("FoodController.do");
     }
 

@@ -24,11 +24,11 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FoodController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession(false);
         int id = Integer.parseInt(session.getAttribute("userId").toString());
@@ -37,13 +37,7 @@ public class FoodController extends HttpServlet {
 
         FoodService foodService = new FoodServiceImpl();
         List<Food> foodList = null;
-        try {
-            foodList = foodService.getFoodList(id);
-        } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        foodList = foodService.getFoodList(id);
 
         List<Food> breakfastList = new ArrayList<Food>();
         List<Food> lunchList = new ArrayList<Food>();
@@ -63,13 +57,17 @@ public class FoodController extends HttpServlet {
 
 
         request.setAttribute("foodList", foodList);
-        request.setAttribute("breakfastList",breakfastList);
+/*        request.setAttribute("breakfastList",breakfastList);
         request.setAttribute("lunchList",lunchList);
-        request.setAttribute("dinnerList",dinnerList);
+        request.setAttribute("dinnerList",dinnerList); */
         request.setAttribute("breakfastFlag",breakfastList.get(0).getVoted());
         request.setAttribute("lunchFlag",lunchList.get(0).getVoted());
         request.setAttribute("dinnerFlag",dinnerList.get(0).getVoted());
-        request.setAttribute("user", session.getAttribute("userName"));
+
+
+        request.setAttribute("userName", session.getAttribute("userName"));
+
+
 
 
 
@@ -88,7 +86,13 @@ public class FoodController extends HttpServlet {
             view = request.getRequestDispatcher("/WEB-INF/jsp/user/show.jsp");
         }*/
 
-        view.forward(request, response);
+        try {
+            view.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
 
     }
 }

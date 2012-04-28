@@ -13,5 +13,5 @@ public interface UserService {
 
    // User get(int userId);
 
-    User getUserByUserNameAndPassword(String userName, String password) throws ClassNotFoundException, SQLException;
+    User getUserByUserNameAndPassword(String userName, String password) ;
 }

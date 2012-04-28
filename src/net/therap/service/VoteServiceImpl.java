@@ -17,7 +17,7 @@ import java.util.Date;
 public class VoteServiceImpl implements VoteService {
 
 
-    public void setVoteCount(int userId, int foodId, Date votingDate) throws ClassNotFoundException, SQLException {
+    public void setVoteCount(int userId, int foodId, Date votingDate){
         //To change body of implemented methods use File | Settings | File Templates.
         Voting vote = new Voting(userId, foodId, votingDate);
         VoteDao voteDao = new VoteDaoImpl();
