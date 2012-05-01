@@ -1,6 +1,9 @@
 package net.therap.dao;
 
 import net.therap.domain.Voting;
+import net.therap.util.DatabaseAccessTemplate;
+
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,9 +20,9 @@ public class VoteDaoImpl implements VoteDao {
 
         //Connection con = databaseAccessTemplate.openConnection();
 
-        String foodInsertQuery = "insert into FMP_USERS_FOODS (USER_ID,FOOD_ID) values (?,?)";
+        String foodInsertQuery = "insert into FMP_USERS_FOODS (USER_ID,FOOD_ID,VOTINGDATE) values (?,?,?)";
 
-        databaseAccessTemplate.updateQuery(foodInsertQuery, vote.getUserId(), vote.getFoodId());
+        databaseAccessTemplate.updateQuery(foodInsertQuery, vote.getUserId(), vote.getFoodId(),new Date());
 
         String foodUpdateQuery = "update FMP_FOODS set count = count + 1 where FOOD_ID = ?";
         databaseAccessTemplate.updateQuery(foodUpdateQuery, vote.getFoodId());

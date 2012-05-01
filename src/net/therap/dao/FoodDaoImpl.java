@@ -1,8 +1,8 @@
 package net.therap.dao;
 
 import net.therap.domain.Food;
+import net.therap.util.DatabaseAccessTemplate;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,12 +18,6 @@ import java.util.List;
 public class FoodDaoImpl implements FoodDao {
     public List<Food> getFoodList(int userId) {
 
-
-        /*Class.forName("oracle.jdbc.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@db102:1521:THERAP", "trainee", "pass321");
-
-        Statement stmt = con.createStatement();
-        *///ResultSet rs = stmt.executeQuery("SELECT * FROM FMP_FOODS WHERE FOOD_ID NOT IN (SELECT FOOD_ID FROM FMP_USERS_FOODS WHERE USER_ID = " + userId + " AND VOTINGDATE != SYSDATE)");
 
 
         DatabaseAccessTemplate databaseAccessTemplate = new DatabaseAccessTemplate();
@@ -51,7 +45,12 @@ public class FoodDaoImpl implements FoodDao {
         String getAllFoodQuery = "SELECT * FROM FMP_FOODS ";
         ResultSet rs = databaseAccessTemplate.queryForObject(getAllFoodQuery);
 
+
+
+
         List<Food> foodList = new ArrayList<Food>();
+
+        //List<Food> foodList = databaseAccessTemplate.queryForObject(new RowFoodMapperImpl(),getAllFoodQuery);
 
         int voted = 1;
 
@@ -63,7 +62,8 @@ public class FoodDaoImpl implements FoodDao {
                     voted = 0;
                 }
                 //}//
-                foodList.add(new Food(rs.getString("FOOD_NAME"), rs.getInt("FOOD_ID"), rs.getString("FOOD_TYPE"), rs.getInt("COUNT"), voted));
+                foodList.add(new Food(rs.getString("FOOD_NAME"), rs.getInt("FOOD_ID"), rs.getString("FOOD_TYPE"),
+                        rs.getInt("COUNT"), voted));
 
             }
         } catch (SQLException e) {

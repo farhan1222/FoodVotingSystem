@@ -1,4 +1,4 @@
-package net.therap.dao;
+package net.therap.util;
 /**
  * Created by IntelliJ IDEA.
  * User: ashraf
@@ -11,9 +11,10 @@ import net.therap.controller.UserController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+ import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseAccessTemplate {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -24,7 +25,7 @@ public class DatabaseAccessTemplate {
     String password;
     String userName;
 
-    DatabaseAccessTemplate() {
+    public DatabaseAccessTemplate() {
 
         this.conString = "jdbc:oracle:thin:@db102:1521:THERAP";
         this.password = "pass321";
@@ -32,12 +33,16 @@ public class DatabaseAccessTemplate {
     }
 
     public Connection openConnection() {
-
+        Context initContext = null;
         try {
 
-            Class.forName("oracle.jdbc.OracleDriver");
-            connection = DriverManager.getConnection(conString, userName, password);
-
+            /* Class.forName("oracle.jdbc.OracleDriver");
+                        connection = DriverManager.getConnection(conString, userName, password);
+            */
+            initContext = new InitialContext();
+            Context envContext = (Context) initContext.lookup("java:/comp/env");
+            DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
+            connection = ds.getConnection();
         } catch (Exception exp) {
             log.debug("error in openconnection");
 
@@ -79,6 +84,10 @@ public class DatabaseAccessTemplate {
                     stmt.setInt(i, (Integer) parameter);
 
                 }
+                else if(parameter instanceof java.util.Date)
+                {
+                    stmt.setDate(i, new java.sql.Date(((java.util.Date)parameter).getTime()));
+                }
 
 
             }
@@ -109,7 +118,7 @@ public class DatabaseAccessTemplate {
 
     }
 
-    ResultSet queryForObject(String query) {
+    public ResultSet queryForObject(String query) {
 
 
         Connection con = openConnection();
@@ -133,7 +142,7 @@ public class DatabaseAccessTemplate {
 
         }
         //closeConnection(con);
-        return  resultSet;
+        return resultSet;
 
 
     }

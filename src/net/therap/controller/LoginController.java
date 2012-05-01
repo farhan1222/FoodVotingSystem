@@ -15,7 +15,9 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doPost(javax.servlet.http.HttpServletRequest request,
+                          javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException,
+            IOException {
         //response.setContentType("text/html");
 
 
@@ -26,9 +28,10 @@ public class LoginController extends HttpServlet {
         String password;
 
 
-        if (!(userName = request.getParameter("username")).trim().equals("") && !(password = request.getParameter("password")).trim().equals("")) {
+        if (!(userName = request.getParameter("username")).trim().equals("") &&
+                !(password = request.getParameter("password")).trim().equals("")) {
 
-            user = userService.getUserByUserNameAndPassword(userName, password);
+            user = userService.getUserByUserNameAndPassword(userName.trim(), password);
         }
 
         if (user == null) {
@@ -42,7 +45,7 @@ public class LoginController extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("userId", user.getId());
-            session.setAttribute("userName", user.getUserName());
+            session.setAttribute("userName", user.getUserName().trim());
             session.setAttribute("userType", user.isAdmin());
 
             request.setAttribute("userObj", user);

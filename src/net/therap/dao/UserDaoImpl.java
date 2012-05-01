@@ -2,6 +2,7 @@ package net.therap.dao;
 
 import net.therap.controller.UserController;
 import net.therap.domain.User;
+import net.therap.util.DatabaseAccessTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +46,8 @@ public class UserDaoImpl implements UserDao {
 
         try {
             while (rs.next()) {
-                user = new User(rs.getString("USER_NAME"), rs.getString("PASSWORD"), Integer.parseInt(rs.getString("FLAG")),
+                user = new User(rs.getString("USER_NAME"), rs.getString("PASSWORD"),
+                        Integer.parseInt(rs.getString("FLAG")),
                         Integer.parseInt(rs.getString("USER_ID")));
             }
         } catch (SQLException e) {
